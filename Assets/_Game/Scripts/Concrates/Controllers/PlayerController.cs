@@ -1,6 +1,7 @@
 using System;
 using _Game.Scripts.Abstracts;
 using _Game.Scripts.Concrates.Inputs;
+using _Game.Scripts.Concrates.Managers;
 using _Game.Scripts.Concrates.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -35,8 +36,6 @@ namespace _Game.Scripts.Concrates.Controllers
             {
                 isJump = true;
             }
-
-            Debug.Log("Jump : " + _inputReader.IsJump);
         }
 
         private void FixedUpdate()
@@ -49,6 +48,17 @@ namespace _Game.Scripts.Concrates.Controllers
             }
 
             isJump = false;
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
+            
+            if (enemyController != null)
+            {
+                Debug.Log("Stop Game");
+                GameManager.Instance.StopGame();
+            }
         }
     }
 }
