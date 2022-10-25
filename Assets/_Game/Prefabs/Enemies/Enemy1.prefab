@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1502216773071407520}
   - component: {fileID: 3782230638677755701}
   - component: {fileID: 6874373172661812415}
-  - component: {fileID: 6642416670042454875}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6642416670042454875
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1491196154468738582}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7901045318172910797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106,11 +92,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1211876543974741568, guid: e2d98a7a20c75284c89b99456afc310c, type: 3}
       propertyPath: moveSpeed
-      value: 25
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1211876543974741568, guid: e2d98a7a20c75284c89b99456afc310c, type: 3}
       propertyPath: maxLifeTime
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2068111000542756780, guid: e2d98a7a20c75284c89b99456afc310c, type: 3}
       propertyPath: m_RootOrder
@@ -162,6 +148,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2d98a7a20c75284c89b99456afc310c, type: 3}
+--- !u!1 &495064936386310896 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7744208068773877309, guid: e2d98a7a20c75284c89b99456afc310c, type: 3}
+  m_PrefabInstance: {fileID: 7901045318172910797}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6669485233179247318
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495064936386310896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &8148490730392263521 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2068111000542756780, guid: e2d98a7a20c75284c89b99456afc310c, type: 3}
