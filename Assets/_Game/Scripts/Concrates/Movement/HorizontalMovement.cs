@@ -12,11 +12,15 @@ namespace _Game.Scripts.Concrates.Movement
             _playerController = playerController;
         }
 
-        public void Move(float horizontalDirection, float moveSpeed)
+        public void Move(float horizontalDirection, float moveSpeed, float xClamp)
         {
             if(horizontalDirection == 0) return;
             
             _playerController.transform.Translate(Vector3.right * (Time.deltaTime * horizontalDirection * moveSpeed));
+
+            float playerX = Mathf.Clamp(_playerController.transform.position.x, -xClamp, xClamp);
+
+            _playerController.transform.position = new Vector3(playerX, _playerController.transform.position.y, 0);
         }
 
     }
