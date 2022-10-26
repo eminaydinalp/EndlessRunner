@@ -1,15 +1,17 @@
+using _Game.Scripts.Abstracts.Controllers;
+using _Game.Scripts.Abstracts.Movements;
 using _Game.Scripts.Concrates.Controllers;
 using UnityEngine;
 
 namespace _Game.Scripts.Concrates.Movement
 {
-    public class JumpWithRigidbody
+    public class JumpWithRigidbody : IJump
     {
         private Rigidbody _rigidbody;
 
-        public JumpWithRigidbody(PlayerController playerController)
+        public JumpWithRigidbody(IEntityController entityController)
         {
-            _rigidbody = playerController.GetComponent<Rigidbody>();
+            _rigidbody = entityController.Rigidbody;
         }
 
         public void Jump(float jumpForce)

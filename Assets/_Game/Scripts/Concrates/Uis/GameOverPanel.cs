@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace _Game.Scripts.Concrates.Uis
 {
-    public class MenuPanel : MonoBehaviour
+    public class GameOverPanel : MonoBehaviour
     {
-        public void StartButton()
+        public void ReplyButton()
         {
             GameManager.Instance.LoadScene(Consts.GameScene);
         }
 
-        public void ExitButton()
+        public void GoBackMenuButton()
         {
-            GameManager.Instance.ExitGame();
+            GameManager.Instance.LoadScene(Consts.MenuScene);
         }
     
     }

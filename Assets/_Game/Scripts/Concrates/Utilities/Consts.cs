@@ -11,5 +11,12 @@ namespace _Game.Scripts.Concrates.Utilities
 
         #endregion
 
+        #region SceneNames
+
+        public const string GameScene = "Game";
+        public const string MenuScene = "Menu";
+
+        #endregion
+
     }
 }

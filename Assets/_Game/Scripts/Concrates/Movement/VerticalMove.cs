@@ -1,22 +1,24 @@
+using _Game.Scripts.Abstracts.Controllers;
+using _Game.Scripts.Abstracts.Movements;
 using _Game.Scripts.Concrates.Controllers;
 using UnityEngine;
 
 namespace _Game.Scripts.Concrates.Movement
 {
-    public class VerticalMove
+    public class VerticalMove : IMover
     {
-        private EnemyController _enemyController;
+        private IEntityController _entityController;
         private float _moveSpeed;
 
-        public VerticalMove(EnemyController enemyController)
+        public VerticalMove(IEntityController entityController)
         {
-            _enemyController = enemyController;
-            _moveSpeed = _enemyController.MoveSpeed;
+            _entityController = entityController;
+            _moveSpeed = _entityController.MoveSpeed;
         }
 
-        public void MoveVertical(float direction = 1)
+        public void Move(float direction = 1)
         {
-            _enemyController.transform.Translate(Vector3.back *(direction * Time.deltaTime * _moveSpeed));
+            _entityController.transform.Translate(Vector3.back *(direction * Time.deltaTime * _moveSpeed));
         }
 
     }

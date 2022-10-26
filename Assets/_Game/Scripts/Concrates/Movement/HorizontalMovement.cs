@@ -1,26 +1,32 @@
+using _Game.Scripts.Abstracts.Controllers;
+using _Game.Scripts.Abstracts.Movements;
 using _Game.Scripts.Concrates.Controllers;
 using UnityEngine;
 
 namespace _Game.Scripts.Concrates.Movement
 {
-    public class HorizontalMovement
+    public class HorizontalMovement : IMover
     {
-        private PlayerController _playerController;
+        private IEntityController _entityController;
+        private float _xClamp;
+        private float _moveSpeed;
 
-        public HorizontalMovement(PlayerController playerController)
+        public HorizontalMovement(IEntityController entityController)
         {
-            _playerController = playerController;
+            _entityController = entityController;
+            _xClamp = _entityController.XClamp;
+            _moveSpeed = _entityController.MoveSpeed;
         }
 
-        public void Move(float horizontalDirection, float moveSpeed, float xClamp)
+        public void Move(float horizontalDirection)
         {
             if(horizontalDirection == 0) return;
             
-            _playerController.transform.Translate(Vector3.right * (Time.deltaTime * horizontalDirection * moveSpeed));
+            _entityController.transform.Translate(Vector3.right * (Time.deltaTime * horizontalDirection * _moveSpeed));
 
-            float playerX = Mathf.Clamp(_playerController.transform.position.x, -xClamp, xClamp);
+            float playerX = Mathf.Clamp(_entityController.transform.position.x, -_xClamp, _xClamp);
 
-            _playerController.transform.position = new Vector3(playerX, _playerController.transform.position.y, 0);
+            _entityController.transform.position = new Vector3(playerX, _entityController.transform.position.y, 0);
         }
 
     }

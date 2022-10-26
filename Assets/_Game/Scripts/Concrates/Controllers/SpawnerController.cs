@@ -1,3 +1,4 @@
+using _Game.Scripts.Concrates.Managers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -5,8 +6,6 @@ namespace _Game.Scripts.Concrates.Controllers
 {
     public class SpawnerController : MonoBehaviour
     {
-        [SerializeField] private EnemyController enemyController;
-
         [Range(0.5f, 3)] [SerializeField] private float minSpawnTime;
         [Range(5, 10)] [SerializeField] private float maxSpawnTime;
 
@@ -33,8 +32,7 @@ namespace _Game.Scripts.Concrates.Controllers
 
         private void Spawn()
         {
-            Instantiate(enemyController, transform.position, transform.rotation, transform);
-            
+            EnemyManager.Instance.GetEnemyFromPool(transform.position, transform.rotation);
             ChangeSpawnTime();
         }
 

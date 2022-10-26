@@ -1,22 +1,19 @@
-using System;
-using System.Security.Cryptography;
+using _Game.Scripts.Abstracts.Controllers;
+using _Game.Scripts.Concrates.Managers;
 using _Game.Scripts.Concrates.Movement;
 using UnityEngine;
+using CharacterController = _Game.Scripts.Abstracts.Controllers.CharacterController;
 
 namespace _Game.Scripts.Concrates.Controllers
 {
-    public class EnemyController : MonoBehaviour
+    public class EnemyController : CharacterController, IEntityController
     {
         private VerticalMove _verticalMove;
-        
-        [SerializeField] private float moveSpeed;
 
         [SerializeField] private float maxLifeTime;
 
         private float _currentTime;
-
-        public float MoveSpeed => moveSpeed;
-
+        
         private void Awake()
         {
             _verticalMove = new VerticalMove(this);
@@ -36,12 +33,12 @@ namespace _Game.Scripts.Concrates.Controllers
 
         private void FixedUpdate()
         {
-            _verticalMove.MoveVertical();
+            _verticalMove.Move();
         }
 
         void SelfDestroyer()
         {
-            Destroy(gameObject);
+            EnemyManager.Instance.SetEnemyActive(this);
         }
     }
 }
