@@ -97,6 +97,7 @@ PrefabInstance:
     - target: {fileID: 1211876543974741568, guid: e2d98a7a20c75284c89b99456afc310c, type: 3}
       propertyPath: maxLifeTime
       value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1211876543974741568, guid: e2d98a7a20c75284c89b99456afc310c, type: 3}
       propertyPath: horizontalMoveXClamp
       value: 4

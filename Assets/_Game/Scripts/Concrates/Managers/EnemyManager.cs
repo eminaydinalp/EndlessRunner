@@ -1,47 +1,65 @@
-using System.Collections.Generic;
-using _Game.Scripts.Concrates.Controllers;
 using _Game.Scripts.Concrates.Utilities;
 using UnityEngine;
 
 namespace _Game.Scripts.Concrates.Managers
 {
-    public class EnemyManager : Singleton<EnemyManager>
+    public class EnemyManager : ObjectPooler
     {
-
-        [SerializeField] private EnemyController _enemyController;
-        [SerializeField] private int enemyCount;
-        private Queue<EnemyController> _enemyControllers = new Queue<EnemyController>();
+        public static EnemyManager Instance;
         
-        private void InitialEnemy()
+        private int _enemyIndex;
+
+        public int EnemyIndex
         {
-            for (int i = 0; i < enemyCount; i++)
+            get => _enemyIndex;
+            private set
             {
-                EnemyController newEnemy = Instantiate(_enemyController);
-                _enemyControllers.Enqueue(newEnemy);
-                newEnemy.gameObject.SetActive(false);
+                if (value <= pools.Count)
+                {
+                    _enemyIndex = value;
+                }
             }
         }
 
-        public EnemyController GetEnemyFromPool(Vector3 position, Quaternion rotation)
+        [SerializeField] private float addDelayTime;
+
+        public float AddDelayTime
         {
-            if (_enemyControllers.Count == 0)
+            get => addDelayTime;
+            set => addDelayTime = value;
+        }
+
+        private float _time;
+
+        private float _timeForIncrease;
+        private void Awake()
+        {
+            if (Instance == null)
             {
-                InitialEnemy();
+                Instance = this;
+                //DontDestroyOnLoad(gameObject);
             }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        private void Update()
+        {
+            if(_enemyIndex == pools.Count) return;
             
-            EnemyController enemyController = _enemyControllers.Dequeue();
-            enemyController.gameObject.SetActive(true);
-            enemyController.gameObject.transform.position = position;
-            enemyController.gameObject.transform.rotation = rotation;
-            _enemyControllers.Enqueue(enemyController);
-
-            return enemyController;
+            if (_time < Time.time)
+            {
+                _time = Time.time + addDelayTime;
+                IncreaseEnemyIndex();
+            }
         }
 
-        public void SetEnemyActive(EnemyController enemyController)
+        private void IncreaseEnemyIndex()
         {
-            enemyController.gameObject.SetActive(false);
+            EnemyIndex++;
         }
-
+        
     }
 }

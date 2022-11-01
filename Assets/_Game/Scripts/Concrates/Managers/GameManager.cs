@@ -1,14 +1,26 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
+using _Game.Scripts.Concrates.Utilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace _Game.Scripts.Concrates.Managers
 {
-    public class GameManager : Utilities.Singleton<GameManager>
+    public class GameManager : Singleton<GameManager>
     {
         public Action OnStop;
+
+        private int _levelDifficultyIndex;
+
+        public int LevelDifficultyIndex
+        {
+            get => _levelDifficultyIndex;
+            set
+            { 
+                _levelDifficultyIndex = value;
+            }
+        }
+
         public void StopGame()
         {
             OnStop?.Invoke();

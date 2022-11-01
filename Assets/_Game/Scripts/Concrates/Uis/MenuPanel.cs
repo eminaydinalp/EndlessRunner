@@ -6,8 +6,9 @@ namespace _Game.Scripts.Concrates.Uis
 {
     public class MenuPanel : MonoBehaviour
     {
-        public void StartButton()
+        public void StartButton(int index)
         {
+            GameManager.Instance.LevelDifficultyIndex = index;
             GameManager.Instance.LoadScene(Consts.GameScene);
         }
 

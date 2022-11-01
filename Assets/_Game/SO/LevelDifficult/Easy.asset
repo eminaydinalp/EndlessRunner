@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70cc1ee512b81e946a3d7a2533942013, type: 3}
+  m_Name: Easy
+  m_EditorClassIdentifier: 
+  floorPrefab: {fileID: 4311476766286810595, guid: 9d655f3edd25a404ca7c9be1bb85b32b, type: 3}
+  enemySpawnersPrefab: {fileID: 8047333589173738798, guid: 34895b62fa0ca674fbbc4f372eb254dd, type: 3}
+  skybox: {fileID: 2100000, guid: e980bc7fbb00dc34b86b95ac842d1920, type: 2}
+  enemySpeed: 40
+  addDelayTime: 20

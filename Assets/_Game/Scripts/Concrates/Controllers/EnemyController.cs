@@ -16,6 +16,7 @@ namespace _Game.Scripts.Concrates.Controllers
         
         private void Awake()
         {
+            SetMoveSpeed();
             _verticalMove = new VerticalMove(this);
         }
 
@@ -38,7 +39,12 @@ namespace _Game.Scripts.Concrates.Controllers
 
         void SelfDestroyer()
         {
-            EnemyManager.Instance.SetEnemyActive(this);
+            EnemyManager.Instance.DeActiveGameObjet(gameObject);
+        }
+
+        private void SetMoveSpeed()
+        {
+            MoveSpeed = LevelManager.Instance.CurrentLevelDifficulty.EnemySpeed;
         }
     }
 }

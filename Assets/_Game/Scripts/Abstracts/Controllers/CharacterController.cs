@@ -10,8 +10,18 @@ namespace _Game.Scripts.Abstracts.Controllers
         public Rigidbody Rigidbody => _rigidbody;
         
         [SerializeField] private float moveSpeed;
-        public float MoveSpeed => moveSpeed;
-        
+        public float MoveSpeed
+        {
+            get
+            {
+                return moveSpeed;
+            }
+            set
+            {
+                moveSpeed = value;
+            }
+        }
+
         [SerializeField] private float horizontalMoveXClamp;
         public float XClamp => horizontalMoveXClamp;
     }

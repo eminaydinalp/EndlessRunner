@@ -18,5 +18,19 @@ namespace _Game.Scripts.Concrates.Utilities
 
         #endregion
 
+        #region ObjectPoolTypes
+
+        public const string Enemy1 = "Enemy1";
+        public const string Enemy2 = "Enemy2";
+        public const string Enemy3 = "Enemy3";
+
+        #endregion
+
+        #region Animations
+
+        public const string JumpAnim = "isJump";
+
+        #endregion
+
     }
 }
